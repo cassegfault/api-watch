@@ -1,0 +1,16 @@
+{
+  "database": {
+    "name": "records.db"
+  },
+  "api": {
+    "per_page": 50,
+    "port": 8080
+  },
+  "records": [
+    {
+      "name": "ether",
+      "url": "http://api.coindesk.com/v1/bpi/currentprice.json",
+      "every": 30000
+    }
+  ]
+}

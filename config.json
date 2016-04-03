@@ -1,0 +1,21 @@
+{
+  "database": {
+    "name": "records.db"
+  },
+  "api": {
+    "per_page": 50,
+    "port": 8080
+  },
+  "records": [
+    {
+      "name": "ether",
+      "url": "https://coinmarketcap-nexuist.rhcloud.com/api/eth",
+      "every": 30000
+    },
+    {
+      "name": "bitcoin",
+      "url": "https://coinmarketcap-nexuist.rhcloud.com/api/btc",
+      "every": 60000
+    }
+  ]
+}
