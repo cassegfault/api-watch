@@ -26,7 +26,7 @@ function grabData(callback) {
   xhr.onreadystatechange = function(){
     if(xhr.readyState === 4 && xhr.status >= 200){
       var data = JSON.parse(xhr.responseText);
-      logs = data;
+      logs = data.reverse();
       callback();
     } else if (xhr.readyState === 4) {
       console.warn("Error getting API", xhr.status);
@@ -57,6 +57,15 @@ function update() {
   var currentStatus = logs[logs.length - 1].data;
   setElementText("change", currentStatus.change);
   setElementText("supply", currentStatus.supply);
+  setElementText("price-usd","$"+currentStatus.price.usd);
+  var classList = document.getElementsByTagName('body')[0].classList;
+  if(currentStatus.change > 0){
+    classList.remove('down');
+    classList.add('up');
+  } else {
+    classList.remove('up');
+    classList.add('down');
+  }
 }
 
 function tick() {

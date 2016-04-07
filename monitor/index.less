@@ -42,7 +42,23 @@ html,body{
 .negative {
   color:@red;
 }
-#ticker .area {
-  stroke:@green;
-  fill:fade(@green,10);
+
+.down {
+  #ticker .area {
+    stroke:@red;
+    fill:fade(@red,10);
+  }
+  .colored {
+    color:@red;
+  }
+}
+
+.up{
+  #ticker .area {
+    stroke:@green;
+    fill:fade(@green,10);
+  }
+  .colored {
+    color:@green;
+  }
 }

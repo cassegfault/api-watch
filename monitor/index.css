@@ -39,7 +39,17 @@ body {
 .negative {
   color: #ff0000;
 }
-#ticker .area {
+.down #ticker .area {
+  stroke: #ff0000;
+  fill: rgba(255, 0, 0, 0.1);
+}
+.down .colored {
+  color: #ff0000;
+}
+.up #ticker .area {
   stroke: #00ff00;
   fill: rgba(0, 255, 0, 0.1);
+}
+.up .colored {
+  color: #00ff00;
 }
