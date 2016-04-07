@@ -44,11 +44,24 @@ var server = http.createServer((req, res) => {
       });
     }
   }
-  
+  var headers = {};
+      headers["Content-Type"] = "application/json";
+      headers["Access-Control-Allow-Origin"] = "*";
+      headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
+      headers["Access-Control-Allow-Credentials"] = true;
+      headers["Access-Control-Max-Age"] = '86400'; // 24 hours
+      headers["Access-Control-Allow-Headers"] = "X-Requested-With, Access-Control-Allow-Origin, X-HTTP-Method-Override, Content-Type, Authorization, Accept";
   function completeFunction () {
-    res.writeHead(200,{"Content-Type": "application/json"});
-    res.write(JSON.stringify(outputs));
-    res.end();  
+    if (req.method === 'OPTIONS') {
+    
+      res.writeHead(200,headers);
+      res.end();
+    } else {
+      
+      res.writeHead(200,headers);
+      res.write(JSON.stringify(outputs));
+      res.end(); 
+    }
   }
 });
 

@@ -1,0 +1,33 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300);
+
+@green: #00ff00;
+@red: #ff0000;
+
+html,body{
+  margin:0;
+  padding:0;
+  background:#333;
+  color:#fff;
+  font-family:sans-serif;
+}
+
+#ticker{
+  display:inline-block;
+  width:400px;
+  height:200px;
+}
+.label{
+  font-family:'Roboto Condensed', sans-serif;
+  font-size:2em;
+  text-transform:uppercase;
+}
+.positive {
+  color:@green;
+}
+.negative {
+  color:@red;
+}
+#ticker .area {
+  stroke:@green;
+  fill:fade(@green,10);
+}
