@@ -36,7 +36,7 @@ function grabData(callback) {
 }
 
 function updateChart() {
-  var mapped = logs.filter((item,index) => ((index % 10) === 0)).map(function(log, index){
+  var mapped = logs.map(function(log, index){
     
     return {
       price: log.data.price['usd'],
