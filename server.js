@@ -23,15 +23,16 @@ var server = http.createServer((req, res) => {
     config.api.per_page = 25;
   }
   
-  var name = parts[0];
-  var page = parts[1] || 0;
-  var offset = config.api.per_page * page;
-  var outputs = [];
+  var name = parts[0],
+      page = parts[1] || 0,
+      limit = req.headers['response-limit'] || config.api.per_page,
+      offset = limit * page,
+      outputs = [];
   
   if (page < 0) {
     db.each("SELECT timestamp, name, response FROM records WHERE `name`=?", name, iterateFunction, completeFunction);
   } else {
-    db.each("SELECT timestamp, name, response FROM records WHERE `name`=? LIMIT ? OFFSET ?", name, config.api.per_page, offset, iterateFunction, completeFunction);
+    db.each("SELECT timestamp, name, response FROM records WHERE `name`=? LIMIT ? OFFSET ?", name, limit, offset, iterateFunction, completeFunction);
   }
   
   function iterateFunction (err,row) {
@@ -50,7 +51,7 @@ var server = http.createServer((req, res) => {
       headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
       headers["Access-Control-Allow-Credentials"] = true;
       headers["Access-Control-Max-Age"] = '86400'; // 24 hours
-      headers["Access-Control-Allow-Headers"] = "X-Requested-With, Access-Control-Allow-Origin, X-HTTP-Method-Override, Content-Type, Authorization, Accept";
+      headers["Access-Control-Allow-Headers"] = "X-Requested-With, Access-Control-Allow-Origin, X-HTTP-Method-Override, Content-Type, Authorization, Accept, response-limit";
   function completeFunction () {
     if (req.method === 'OPTIONS') {
     

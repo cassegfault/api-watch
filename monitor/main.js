@@ -16,6 +16,7 @@ var chartElement = document.getElementById("ticker"),
 function grabData() {
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "http://eth-api.chrispthats.me/ether");
+  xhr.setRequestHeader('response-limit','300');
   xhr.onreadystatechange = function(){
     if(xhr.readyState === 4 && xhr.status >= 200){
       var data = JSON.parse(xhr.responseText);
