@@ -41,8 +41,8 @@ function updateChart() {
           .y0(200)
           .y1((d) => chart.y(d.price) );
   d3.select("#ticker .area").datum(mapped).attr("d", area);
-  
-  window.localStorage.setItem("ETHPriceTracker", JSON.stringify(logs));
+  console.log(mapped);
+  //window.localStorage.setItem("ETHPriceTracker", JSON.stringify(logs));
 }
 
 function update() {
