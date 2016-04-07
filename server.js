@@ -30,9 +30,9 @@ var server = http.createServer((req, res) => {
       outputs = [];
   
   if (page < 0) {
-    db.each("SELECT timestamp, name, response FROM records WHERE `name`=?", name, iterateFunction, completeFunction);
+    db.each("SELECT timestamp, name, response FROM records WHERE `name`=? ORDER BY timestamp DESC", name, iterateFunction, completeFunction);
   } else {
-    db.each("SELECT timestamp, name, response FROM records WHERE `name`=? LIMIT ? OFFSET ?", name, limit, offset, iterateFunction, completeFunction);
+    db.each("SELECT timestamp, name, response FROM records WHERE `name`=? LIMIT ? OFFSET ? ORDER BY timestamp DESC", name, limit, offset, iterateFunction, completeFunction);
   }
   
   function iterateFunction (err,row) {
