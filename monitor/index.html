@@ -7,16 +7,22 @@
   <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.js"></script>
 </head>
 <body>
-  <h2>ETH price ticker</h2>
-<div id="ticker-wrapper"><svg id="ticker" viewBox="0 0 200 100" width="400" height="200"></svg></div>
+  <h1>ETH price ticker</h1>
+<div class="row centered">
+  <div id="supply-wrapper" class="row-item">
+    <span class="label">Supply</span>
+    <div id="supply"></div>
+  </div>
 
-<div id="supply-wrapper">
-  <span class="label">Supply</span>
-  <div id="supply"></div>
-</div>
-<div id="change-wrapper">
-  <span class="label">Change</span>
-  <div id="change"></div>
+  <div id="ticker-wrapper" class="row-item">
+    <svg id="ticker"></svg>
+  </div>
+
+
+  <div id="change-wrapper" class="row-item">
+    <span class="label">Change</span>
+    <div id="change"></div>
+  </div>
 </div>
 <script type="application/javascript" src="main.js"></script>
 </body>
